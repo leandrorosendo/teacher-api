@@ -2,9 +2,8 @@
 
 ## About
 
-This is a simple API/Rest test to Teacher. It's a backend API to be consumed 
-by [teacher-web]() 
-frontend.
+This is a simple API/Rest test to CRUD a teacher, discipline and link teacher to discipline. 
+It's a backend API to be consumed by [teacher-web]()  frontend.
 
 ### Install Dependencies 
 ```
@@ -58,7 +57,3 @@ the app will reponse with 500 code and an array of erros. Otherwise will return 
 results and a new list of winners.
 
 
-
-
-4 - executar o comando de criacao das tabelas. "php artisan migrate:fresh --seed "
-5 -  Testando aplicação se estiver usando windows executar o comando  para testar aplicação: "vendor\bin\phpunit.bat"
