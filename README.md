@@ -10,19 +10,11 @@ frontend.
 ```
 composer install
 ```
+
 ### Create .env file
 ```
  (LINUX) cp .env.example .env
  (WINDOWS)copy .env.example .env
-```
-### Create .env file
-```
- (LINUX):  cp  .env.example .env
- (WINDOWS):copy .env.example .env
-```
-### Configure .env file with db settings
-```
-ex: DB_DATABASE=professor_api
 ```
 
 ### Configura .env file with db settings
@@ -30,14 +22,19 @@ ex: DB_DATABASE=professor_api
 ex: DB_DATABASE=professor_api
 ```
 
+## Run Server Api
+```
+php -S localhost:8000 -t public
+```
+
 ## Run Seeders
 ```
-PHP artisan migrate:fresh --seed 
+php artisan migrate:fresh --seed 
 ```
 
 ## Test
 ```
-(WINDOWS): run command  vendor\bin\phpunit.bat
+(WINDOWS):  vendor\bin\phpunit.bat
 ```
 
 
