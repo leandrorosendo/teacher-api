@@ -1,6 +1,4 @@
-# Teacher App - API/REST
-
-## About
+# Teacher-App - API/REST
 
 This is a simple API/Rest test to CRUD a teacher, discipline and link teacher to discipline. 
 It's a backend API to be consumed by [teacher-web](https://github.com/leandrorosendo/teacher-web)  frontend.
