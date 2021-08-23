@@ -43,17 +43,10 @@ php artisan migrate:fresh --seed
 ```
 
 
-This app is using Lumen Framework. It's a very simple app. There is no auth or CSRF 
-protection.
+This app is using Lumen Framework. It's a very simple app. There is no auth or CSRF protection.
 
-There are only two rotes. One for the winner's list ```/winners``` and other to play the 
-game ```/play```.
+There are only three rotes. One for the teacher's ```/teachers``` , disciplines  ```/disciplines``` and other to link teacher disciplines  ```/teachers/disciplines```.
 
-The app will check if the player alerady exists, if not it'll create a new player and 
-store the scores to him. Otherwise updates the player's scores. The player checker will 
-only check by name (case insensitive). After each play the app will check if the request 
-is valid checking the form fields and cards type and size allowed. Any problem on that 
-the app will reponse with 500 code and an array of erros. Otherwise will return the game 
-results and a new list of winners.
+The app will check if the cpf and email the teacher already exists and if age < 18 years, if not it'll create a new teacher and store. Otherwise updates the player's scores. The discipline checker will only check by name (case insensitive). Each creation / changethe app linked teacher x discipline will check if the teacher is already linked to a subject. Any problem on that the app will reponse with 422 code and an array of erros. All routes the app check if informations compatibles of data types.
 
 
