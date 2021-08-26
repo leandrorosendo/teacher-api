@@ -3,52 +3,18 @@
 namespace App\Repository;
 
 use App\Models\Discipline;
-use Illuminate\Database\Eloquent\Collection;
 
-class DisciplineRepository
+class DisciplineRepository extends BaseRepository
 {
+  protected $model;
 
-  /**
-   * Saves a Discipline.
-   *
-   * @param $Discipline
+  /**      
+   * BaseRepository constructor.      
+   *      
+   * @param Model $model      
    */
-  public function save($request)
+  public function __construct(Discipline $model)
   {
-    $discipline = new Discipline();
-    $discipline->discipline = $request['discipline'];
-    return $discipline->save();
-  }
-
-  /**
-   * Update a Discipline.
-   *
-   * @param $id
-   */
-  public function update($request, $id)
-  {
-    $discipline = Discipline::find($id);
-    $discipline->discipline = $request['discipline'];
-    return $discipline->save();
-  }
-
-  /**
-   * Destroy a Discipline.
-   *
-   * @param $id
-   */
-  public function destroy($id)
-  {
-    $discipline = Discipline::find($id);
-    return $discipline->delete();
-  }
-
-  /**
-   * get a Discipline.
-   *
-   */
-  public function getAll(): Collection
-  {
-    return Discipline::all();
+    $this->model = $model;
   }
 }

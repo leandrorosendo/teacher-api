@@ -5,43 +5,18 @@ namespace App\Repository;
 use App\Models\TeacherDiscipline;
 use Illuminate\Database\Eloquent\Collection;
 
-class TeacherDisciplineRepository
+class TeacherDisciplineRepository extends BaseRepository
 {
-  /**
-   * Saves a TeacherDiscipline
-   *
-   * @param $TeacherDiscipline
-   */
-  public function save($request)
-  {
-    $teacherDiscipline = new TeacherDiscipline();
-    $teacherDiscipline->teacher_id = $request['teacher_id'];
-    $teacherDiscipline->discipline_id = $request['discipline_id'];
-    return $teacherDiscipline->save();
-  }
+  protected $model;
 
-  /**
-   * Update a TeacherDiscipline.
-   *
-   * @param $id
+  /**      
+   * BaseRepository constructor.      
+   *      
+   * @param Model $model      
    */
-  public function update($request, $id)
+  public function __construct(TeacherDiscipline $model)
   {
-    $teacherDiscipline= TeacherDiscipline::find($id);
-    $teacherDiscipline->teacher_id = $request['teacher_id'];
-    $teacherDiscipline->discipline_id = $request['discipline_id'];
-    return $teacherDiscipline->save();
-  }
-
-  /**
-   * Destroy a TeacherDiscipline.
-   *
-   * @param $id
-   */
-  public function destroy($id)
-  {
-    $teacherDiscipline= TeacherDiscipline::find($id);
-    return $teacherDiscipline->delete();
+    $this->model = $model;
   }
 
   /**
