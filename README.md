@@ -1,30 +1,50 @@
-# Lumen PHP Framework
+# Teacher-App - API/REST
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+This is a simple API/Rest test to CRUD a teacher, discipline and link teacher to discipline. 
+It's a backend API to be consumed by [teacher-web](https://github.com/leandrorosendo/teacher-web)  frontend.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+### Install Dependencies 
+```
+composer install
+```
 
-## Official Documentation
+### Create .env file
+```
+ (LINUX) cp .env.example .env
+ (WINDOWS)copy .env.example .env
+```
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+### Configura .env file with db settings
+```
+ex: 
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=professor_api
+DB_USERNAME=postgres
+DB_PASSWORD=
+```
 
-## Contributing
+## Run Server Api
+```
+php -S localhost:8000 -t public
+```
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Run Seeders
+```
+php artisan migrate:fresh --seed 
+```
 
-## Security Vulnerabilities
+## Test
+```
+(WINDOWS):  vendor\bin\phpunit.bat
+```
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-## License
+This app is using Lumen Framework. It's a very simple app. There is no auth or CSRF protection.
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+There are only three rotes. One for the teacher's ```/teachers``` , disciplines  ```/disciplines``` and other to link teacher disciplines  ```/teachers/disciplines```.
 
-1 - Criar o arquivo .env usando o comonado cpy .....
-2 - Colocar as coneexoes do banco
-3 - quanado for rodar o comando 4, precisa ta criado o banco de dados do env (DB_DATABASE=professor_api)
-4 - executar o comando de criacao das tabelas. "php artisan migrate:fresh --seed "
-5 -  Testando aplicação se estiver usando windows executar o comando  para testar aplicação: "vendor\bin\phpunit.bat"
+The app will check if the cpf and email the teacher already exists and if age < 18 years, if not it'll create a new teacher and store. Otherwise updates the player's scores. The discipline checker will only check by name (case insensitive). Each creation / changethe app linked teacher x discipline will check if the teacher is already linked to a subject. Any problem on that the app will reponse with 422 code and an array of erros. All routes the app check if informations compatibles of data types.
+
+
